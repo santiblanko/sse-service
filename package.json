@@ -1,0 +1,22 @@
+{
+  "name": "sse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+        "start": "node sse.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "body-parser": "^1.19.0",
+    "bull": "^3.18.1",
+    "bull-board": "^0.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ec2-publicip": "^1.0.4",
+    "eventsource": "^1.0.7",
+    "express": "^4.17.1",
+    "express-sse": "^0.5.3",
+    "tsscmp": "^1.0.6"
+  }
+}
