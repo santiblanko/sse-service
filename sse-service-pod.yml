@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sse-service-pod
+  labels:
+    app: sse-service
+spec:
+  containers:
+  - name: sse-service
+    image: santiblanko/sse-service:latest
+    ports:
+    - containerPort: 8085

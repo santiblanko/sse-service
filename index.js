@@ -6,14 +6,8 @@ var bodyParser = require('body-parser');
 var SSE = require('express-sse');
 const EventSource = require('eventsource');
 
-var ec2 = require("ec2-publicip");
 const basicAuth = require('./middleware/auth.js');
-
-const Queue = require('bull')
-const { setQueues, UI } = require('bull-board')
-
-var machineCreatorQueue = new Queue('machine creator queue', { redis: { port: process.env.REDIS_PORT, host: process.env.REDIS_HOST, password: process.env.REDIS_PASSWORD, maxRetriesPerRequest: null, enableReadyCheck: false } })
-setQueues([machineCreatorQueue])
+const signale = require('signale')
 
 var app = express();
 app.use(cors());
@@ -44,5 +38,7 @@ app.post('/push', function(req, res) {
     res.send({ status: 'ok' })
 });
 
-app.use('/admin/queues', basicAuth, UI)
-app.listen(process.env.PORT || 8085);
+app.listen(process.env.PORT || 8085, () => {
+    signale.success(`shape.us.org SSE Listening at http://localhost:${process.env.PORT}`);
+});
+
